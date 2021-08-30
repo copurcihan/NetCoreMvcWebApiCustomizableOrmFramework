@@ -1,0 +1,2 @@
+# NetCoreMvcWebApiCustomizableOrmFramework
+In the .Net Core MVC Web API example, which has a 3-layer architecture, which I have developed to use in my projects, api represents the application layer, ccoftBLL represents the business logic layer, and ccoftDAL represents the data access layer. In the data access layer, the Object Relational Mapping (ORM) structure provides a very flexible and practical way to establish database and object connections and prevents security threats.
