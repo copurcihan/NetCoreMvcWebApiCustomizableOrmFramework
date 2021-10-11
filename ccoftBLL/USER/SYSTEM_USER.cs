@@ -824,7 +824,7 @@ namespace ccoftBLL.USER
             }
             return l_cProcessResult;
         }
-        public Result<List<SYSTEM_USER>> CheckUser(string p_sEmail, string p_sPassword)
+        public Result<List<SYSTEM_USER>> Authenticate(string p_sEmail, string p_sPassword)
         {
             Result<List<SYSTEM_USER>> l_cProcessResult = new Result<List<SYSTEM_USER>>(this.GetType().Name, System.Reflection.MethodBase.GetCurrentMethod().Name);
             l_cProcessResult.m_cData = new List<SYSTEM_USER>();
@@ -838,21 +838,13 @@ namespace ccoftBLL.USER
                 p_sEmail = p_sEmail.ToLower();
                 BaseExecutor l_cExecutor = new AdoNetExecutor();
                 string l_sQuery = "SELECT SYSTEM_USERS.* FROM SYSTEM_USERS";
-                l_sQuery = l_sQuery + " WHERE SYSTEM_USERS.EMAIL='" + p_sEmail + "'";
+                l_sQuery = l_sQuery + " WHERE SYSTEM_USERS.EMAIL='" + p_sEmail + "' AND SYSTEM_USERS.PASSWORD='" + p_sPassword+ "' AND SYSTEM_USERS.ACTIVE=1";
                 l_cProcessResult.m_cDetail = l_cExecutor.Select(l_sQuery);
                 l_cExecutor.f_GetClassList<SYSTEM_USER>(ref l_cProcessResult);
-                if (l_cProcessResult.m_cData.Count == 0)
+                if (l_cProcessResult.m_cData.Count != 1)
                 {
-                    l_cProcessResult.m_cDetail = new ProcessResult(this.GetType().Name, System.Reflection.MethodBase.GetCurrentMethod().Name, -1, null, ProcessState.Failed, null, SystemMessage.NoRecordsFound);
+                    l_cProcessResult.m_cDetail = new ProcessResult(this.GetType().Name, System.Reflection.MethodBase.GetCurrentMethod().Name, -1, null, ProcessState.Failed, null, SystemMessage.LoginFailed);
                     return l_cProcessResult;
-                }
-                else
-                {
-                    if (l_cProcessResult.m_cData[0].PASSWORD != p_sPassword)
-                    {
-                        l_cProcessResult.m_cDetail = new ProcessResult(this.GetType().Name, System.Reflection.MethodBase.GetCurrentMethod().Name, -1, null, ProcessState.Failed, null, SystemMessage.LoginFailed);
-                        return l_cProcessResult;
-                    }
                 }
             }
             catch (Exception l_cE)

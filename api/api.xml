@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>api</name>
+    </assembly>
+    <members>
+        <member name="T:api.Controllers.SystemUserController">
+            <summary>
+            It contains functions that allow you to perform basic database operations related to the SYSTEM_USER_TYPE table.
+            </summary>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.SignUp(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            Adds a record to the SYSTEM_USERS table by signing up
+            </summary>
+            <param name="p_cObject">Required Fields: NAME,SURNAME,EMAIL,PASSWORD,PASSWORD_AGAIN</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.Login(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            Login
+            </summary>
+            <param name="p_cObject">Required Fields: EMAIL,PASSWORD</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.UpdateMyProfile(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            Updates a registered user's information in the SYSTEM_USERS table
+            </summary>
+            <param name="p_cObject">Required Fields: NAME,SURNAME,EMAIL,PASSWORD</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.UpdateProfile(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            The authorized user updates their information in the SYSTEM_USERS table of a registered user.
+            </summary>
+            <param name="p_cObject">Required Fields: NAME,SURNAME</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.Add(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            The authorized user adds records to the SYSTEM_USERS table
+            </summary>
+            <param name="p_cObject">Required Fields: NAME,SURNAME,EMAIL,PASSWORD</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.GetById(System.Int32)">
+            <summary>
+            Return a specific SYSTEM_USER record.
+            </summary>
+            <param name="p_iId">SYSTEM_USER_ID of SYSTEM_USER Table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.GetByEmail(System.String)">
+            <summary>
+            Return a specific SYSTEM_USER record.
+            </summary>
+            <param name="p_sEmail">EMAIL of SYSTEM_USER Table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.RemindPassword(System.String)">
+            <summary>
+            Sends a registered user's password to their email address
+            </summary>
+            <param name="p_sEmail">EMAIL of SYSTEM_USER Table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.ApproveMyAccount(System.String)">
+            <summary>
+            Verifies registered user account
+            </summary>
+            <param name="p_sBaseCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.ApproveUser(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            Authorized user verifies a registered user's account
+            </summary>
+            <param name="p_cObject">Required Fields: SYSTEM_USER_ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.ActivateUser(ccoftBLL.USER.SYSTEM_USER)">
+            <summary>
+            Authorized user activate a registered user's account
+            </summary>
+            <param name="p_cObject">Required Fields: SYSTEM_USER_ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.GetAsNameAndId">
+            <summary>
+            List all SYSTEM_USERS records as NAME AND ID.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserController.Authenticate(System.String)">
+            <summary>
+            Create JWT Token
+            </summary>
+            <param name="p_CredentialValues">Pass UserName,PassWord as Base64</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserTypeController.Get">
+            <summary>
+            List all SYSTEM_USER_TYPE records.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserTypeController.GetById(System.Int32)">
+            <summary>
+            Return a specific SYSTEM_USER_TYPE record
+            </summary>
+            <param name="p_iId">SYSTEM_USER_TYPE_ID of SYSTEM_USER_TYPE Table</param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SystemUserTypeController.GetAsNameId(System.Int32)">
+            <summary>
+            List all SYSTEM_USER_TYPE records by language parameter
+            </summary>
+            <param name="p_iLanguage">1: Turkish 2: English</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
